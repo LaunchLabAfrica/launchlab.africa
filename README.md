@@ -1,6 +1,6 @@
-# _
+# launchlab.africa
 
-This powers `[launchlab.africa](https://launchlab.africa)`, built using [`micro`](https://github.com/zeit/micro) and deployed on [`now`](https://zeit.co/now).
+This powers [`launchlab.africa`](https://launchlab.africa), built using [`micro`](https://github.com/zeit/micro) and deployed on [`now`](https://zeit.co/now).
 
 The inspiration for this comes from the native behavior you get when deploying
 static directories using [`now`](https://zeit.co/now). Under the hood, they make
