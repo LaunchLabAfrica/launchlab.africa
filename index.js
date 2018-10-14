@@ -140,8 +140,8 @@ const downloadExtensions = new Set([
   '.pdf'
 ])
 
-const ignoredFiles = new Set(['.git', '.DS_Store', '404', '500', 'pdbot'])
-const root = path.resolve(process.cwd(), '_pd')
+const ignoredFiles = new Set(['.git', '.DS_Store', '404', '500'])
+const root = path.resolve(process.cwd(), '_')
 const rootObj = path.parse(root)
 const isDirectory = async directory => {
   try {

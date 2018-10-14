@@ -1,17 +1,85 @@
-const zoom = (img) => {
-  document.body.className = 'zoomed'
-  const zoomedImg = document.getElementById('zoomedImage')
-  zoomedImg.parentNode.parentNode.focus()
-  zoomedImg.setAttribute('src', img.getAttribute('src'))
-  zoomedImg.setAttribute('title', img.getAttribute('title'))
-  zoomedImg.setAttribute('alt', img.getAttribute('alt'))
+const SimpleCarousel = function(id, options) {
+  this.id = id || 'simple-carousel';
+  this.class = options.class || 'item';
+  this.w = options.width;
+  this.height = options.height;
+  this.duration = options.duration || 4000;
 
-  zoomedImg.setAttribute('style',
-    `margin: ${(window.innerHeight - zoomedImg.height) / 2}px ${(window.innerWidth - zoomedImg.width) / 2}px;`)
+  this.container = document.getElementById(this.id);
+  this.carouselItems = document.getElementsByClassName(this.class);
+  this.items = this.carouselItems;
+  this._init()
 }
 
-const unzoom = () => {
-  document.body.className = ''
+SimpleCarousel.prototype._init = function () {
+  var self = this;
+  setInterval(function() {
+    self.switch();
+  }, self.duration);
+}
+
+SimpleCarousel.prototype.switch = function () {
+  var self = this;
+  var items = self.items;
+
+  var activeItem = getActiveItem(self.items);
+  var nextItem = next(activeItem, self.items.length);
+
+  self.items[activeItem].style.display = 'none';
+  self.items[nextItem].style.display = 'table';
+
+  function getActiveItem() {
+    activeItem = -1;
+
+    for (var i = 0; i < self.items.length; i++) {
+      if (self.items[i].style.display === 'table') {
+        activeItem = i;
+      }
+    }
+
+    return activeItem;
+  }
+
+  function prev(num, length) {
+    if (num === 0) return length - 1;
+    else return num - 1;
+  }
+
+  function next(num, length) {
+    if(num === length - 1) return 0;
+    else return num + 1;
+  }
+}
+
+const loadCarousel = function () {
+  new SimpleCarousel('testimonials', {class: 'testimonial', duration: 4000 })
+}
+
+const loadFullPage = function(element) {
+  new fullpage('#fullpage', {
+    licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+    sectionsColor: ['#000', '#fff', 'whitesmoke', '#000'],
+    anchors: ['welcome', 'ready', 'set', 'launch', '<3'],
+    sectionsSelector: '.section',
+    responsiveHeight: 0,
+    navigation: true,
+    offsetSections: true,
+    afterRender: function () {
+      element.classList.remove('hidden')
+    },
+    afterLoad: function(origin, destination, direction) {
+      if (!origin) return
+      if (origin.index === 3 && direction === 'down') {
+        fullpage_api.setAutoScrolling(false);
+      }
+    },
+    onLeave: function (origin, destination, direction) {
+      if (!origin) return
+      if (origin.index === 4 && direction === 'up') {
+        fullpage_api.setAutoScrolling(true);
+      }
+    }
+  })
 }
 
 const showProgressIndicator = () => {
@@ -22,34 +90,10 @@ const showProgressIndicator = () => {
 }
 
 const app = () => {
-  document.body.addEventListener('click', e => {
-    if (e.target.nodeName === 'IMG') {
-      zoom(e.target)
-    } else if (e.target.className.indexOf('js-unzoom') >= 0) {
-     unzoom()
-    } else {
-      return
-    }
-
-    e.preventDefault()
-
-  }, {capture: true})
-
-  const TAB = 9
-  const ESC = 27
-  document.body.addEventListener('keydown', e => {
-    if (document.body.className === 'zoomed') {
-      if (e.which === TAB) {
-        document.getElementById('zoomedImage').parentNode.focus()
-      } else if (e.which === ESC) {
-        unzoom()
-      } else {
-        return
-      }
-
-      e.preventDefault()
-    }
-  })
+  const fullpage = document.getElementById('fullpage')
+  const carousel = document.getElementById('testimonials')
+  if (fullpage) loadFullPage(fullpage)
+  if (carousel) loadCarousel();
 }
 
 /**

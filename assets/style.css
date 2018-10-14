@@ -1,11 +1,10 @@
 body {
   background: #fff;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   line-height: 1.5;
   margin: 0 auto;
-  max-width: 800px;
 }
 
 header, footer {
@@ -25,9 +24,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: #1a00f2;
+  color: #000;
   text-decoration: none;
 }
+
 a:focus {
   outline: none;
   border: 1px dotted #000;
@@ -115,6 +115,7 @@ ul li:before, ol li:before {
 .path a:after {
   content: '/';
 }
+
 .path a:hover {
   color: #7d7d7d;
 }
@@ -128,10 +129,14 @@ ul.directories li, ul.downloads li {
  margin-right: 40px;
 }
 
-ul.directories a, ul.downloads a{
-  color: #1a00f2;
+ul.directories a, ul.downloads a {
+  color: #000;
   white-space: nowrap;
   display: block;
+  position: relative;
+  text-decoration: none;
+  border-bottom: 0.5px solid transparent;
+  transition: all 0.3s ease-in-out 0s;
 }
 
 ul.directories a:before {
@@ -144,6 +149,8 @@ ul.directories a:before {
 
 ul.directories a:hover, ul.downloads a:hover {
   color: #000;
+  text-decoration: none;
+  border-bottom: 0.5px dotted #000;
 }
 
 ul.downloads a:before {
@@ -243,8 +250,84 @@ code {
  border-radius: 2px;	
 }
 
+.centered {
+  text-align: center;
+}
 
-@media (min-width: 768px) {
+.logo {
+  width: 88%;
+  margin: 0 auto;
+}
+
+.section {
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content a {
+  white-space: normal;
+  font-weight: 300;
+  display: inline-block;
+  border: 0.5px solid transparent;
+  padding: 1em;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.content a:hover {
+  border: 0.5px dotted #000;
+}
+
+#fullpage {
+  transition-property: all;
+	transition-duration: 1s;
+	transition-timing-function: cubic-bezier(0, 1, 1, 1);
+}
+
+#fullpage.hidden {
+  display: none;
+  opacity: 0;
+}
+
+body.fp-viewing-welcome .fp-section.active *,
+body.fp-viewing-launch .fp-section.active *,
+body.fp-viewing-launch .fp-section.active *,
+body.fp-viewing-launch .fp-section.active *{
+  color: #fff;
+}
+
+body.fp-viewing-launch .fp-section.active .content a:hover {
+  border: 0.5px dotted #fff;
+}
+
+
+
+footer a {
+  border-bottom: 0.5px solid transparent;
+  display: inline-block;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+footer a:hover {
+  border-bottom: 0.5px dotted #000;
+}
+
+@media (max-width: 415px) {
+  header, footer {
+    padding: 3em;
+  }
+
+  main {
+    padding: 0 3em;
+  }
 }
 
 @media (min-width: 992px) {

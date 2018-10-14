@@ -1,6 +1,6 @@
-# pd
+# _
 
-This powers `pauldariye.com`, built using [`micro`](https://github.com/zeit/micro) and deployed on [`now`](https://zeit.co/now).
+This powers `[launchlab.africa](https://launchlab.africa)`, built using [`micro`](https://github.com/zeit/micro) and deployed on [`now`](https://zeit.co/now).
 
 The inspiration for this comes from the native behavior you get when deploying
 static directories using [`now`](https://zeit.co/now). Under the hood, they make
@@ -18,8 +18,8 @@ Check out other awesome things others have built using
 Install and run:
 
 ```bash
-git clone git@github.com:pauldariye/pd.git
-cd pd && yarn
+git clone git@github.com:LaunchLabAfrica/launchlab.africa.git
+cd launchlab.africa && yarn
 yarn start
 ```
 
@@ -42,7 +42,7 @@ object. It is as basic as they come.
 
 ### Directories
 
-Every directory in the `root` of our site, in my case `_pd` is included in the directory listings unless it is blacklisted.
+Every directory in the `root` of our site, in my case `_` is included in the directory listings unless it is blacklisted.
 
 ### Posts
 

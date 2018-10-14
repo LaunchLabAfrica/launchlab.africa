@@ -1,0 +1,76 @@
+#testimonials {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 auto;
+  text-align: center;
+  border-spacing: 20px;
+  border-collapse: separate;
+}
+
+.testimonial {
+  display: none;
+  text-align: center;
+  width: 100%;
+}
+
+.testimonial div:first-child {
+  dispay: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #fff;
+  opacity: 1;
+  color: #000;
+  border-radius: 4px;
+  padding: 10px 10px 20px 15px;
+  font-style: italic;
+  font-size: 1em;
+  border: 1px solid #000;
+  box-shadow: 9px 15px 11px #f8f8f8;
+}
+.testimonial div:first-child:before {
+  font-size: 2em;
+  line-height: 1em;
+  position: absolute;
+  content: open-quote;
+  color: #d4d4d4;
+  width: 100%;
+  overflow: hidden;
+  margin: 5px auto 0;
+  position: relative;
+  quotes: "“" "”" "‘" "’";
+}
+.testimonial div:first-child:after {
+  font-size: 2em;
+  line-height: 1em;
+  position: absolute;
+  content: close-quote;
+  color: #d4d4d4;
+  width: 100%;
+  overflow: hidden;
+  margin: 5px auto 0;
+  position: relative;
+  quotes: "“" "”" "‘" "’";
+}
+.testimonial div:last-child {
+  dispay: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+.testimonial div:last-child img {
+  vertical-align: middle;
+}
+.testimonial img {
+  vertical-align: middle;
+  border-radius: 50%;
+  width: 59px;
+  height: 59px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  .testimonial div:last-child {
+    text-align: center;
+  }
+}
